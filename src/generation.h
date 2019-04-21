@@ -1,7 +1,10 @@
 #ifndef GENERATION_H_
 #define GENERATION_H_
 
-int graph[20][20];
+#define RAW 20
+#define COL 20
+
+int graph[RAW][COL];
 
 void generation_graph();
 void init_graph();

@@ -7,8 +7,8 @@
 
 void init_graph()
 {   
-    for (uint8_t i = 0; i < 20; i++) {
-        for (uint8_t j = 0; j < 20; j++) {
+    for (uint8_t i = 0; i < RAW; i++) {
+        for (uint8_t j = 0; j < COL; j++) {
             graph[i][j] = 0;
         }
     }
@@ -18,15 +18,15 @@ void generation_graph()
 {
     init_graph();
     num_nil();
-    uint8_t edge1 = rand() % 20 - 0;
-    uint8_t edge2 = rand() % 20 - 0;
+    uint8_t edge1 = rand() % RAW - 0;
+    uint8_t edge2 = rand() % COL - 0;
     uint8_t weighted;
 
     //нужно для того чтобы создать связный граф.
-    for (uint8_t i = 0; i < 20; i++) {            
-        edge1 = rand() % 20 - 0;
+    for (uint8_t i = 0; i < RAW; i++) {            
+        edge1 = rand() % RAW - 0;
         while (edge1 == i || graph[edge1][i] != 0) {
-            edge1 = rand() % 20 - 0;
+            edge1 = rand() % RAW - 0;
         }
         weighted = rand() % 10;
         graph[i][edge1] = weighted;
@@ -34,11 +34,11 @@ void generation_graph()
     }
 
     for (uint8_t i = 0; i < 160; i++) {
-        edge1 = rand() % 20 - 0;
-        edge2 = rand() % 20 - 0;
+        edge1 = rand() % RAW - 0;
+        edge2 = rand() % COL - 0;
         while (graph[edge1][edge2] != 0) {
-            edge1 = rand() % 20 - 0;
-            edge2 = rand() % 20 - 0;
+            edge1 = rand() % RAW - 0;
+            edge2 = rand() % COL - 0;
         }
         weighted = rand() % 10;
         graph[edge1][edge2] = weighted;
@@ -48,8 +48,8 @@ void generation_graph()
 
 void print_graph()
 {
-    for (uint8_t i = 0; i < 20; i++) {
-        for (uint8_t j = 0; j < 20; j++) {
+    for (uint8_t i = 0; i < RAW; i++) {
+        for (uint8_t j = 0; j < COL; j++) {
             printf("%d ", graph[i][j]);
         }
         printf("\n");
@@ -59,8 +59,8 @@ void print_graph()
 void num_nil() 
 {
     uint16_t nil = 0;
-    for (uint8_t i = 0; i < 20; i++) {
-        for (uint8_t j = 0; j < 20; j++) {
+    for (uint8_t i = 0; i < RAW; i++) {
+        for (uint8_t j = 0; j < COL; j++) {
             if (graph[i][j] == 0) {
                 nil++;
             }
