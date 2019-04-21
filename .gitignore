@@ -1,3 +1,3 @@
-bin/*
-built/*
+./bin/*
+./built/*.o
 .vscode/
