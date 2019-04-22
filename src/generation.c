@@ -17,32 +17,31 @@ void init_graph()
 void generation_graph()
 {
     init_graph();
-    num_nil();
-    uint8_t edge1 = rand() % RAW - 0;
-    uint8_t edge2 = rand() % COL - 0;
+    uint8_t node1 = rand() % RAW - 0;
+    uint8_t node2 = rand() % COL - 0;
     uint8_t weighted;
 
     //нужно для того чтобы создать связный граф.
     for (uint8_t i = 0; i < RAW; i++) {            
-        edge1 = rand() % RAW - 0;
-        while (edge1 == i || graph[edge1][i] != 0) {
-            edge1 = rand() % RAW - 0;
+        node1 = rand() % RAW - 0;
+        while (node1 == i || graph[node1][i] != 0) {
+            node1 = rand() % RAW - 0;
         }
         weighted = rand() % 10;
-        graph[i][edge1] = weighted;
-        graph[edge1][i] = weighted;
+        graph[i][node1] = weighted;
+        graph[node1][i] = weighted;
     }
 
     for (uint8_t i = 0; i < 160; i++) {
-        edge1 = rand() % RAW - 0;
-        edge2 = rand() % COL - 0;
-        while (graph[edge1][edge2] != 0) {
-            edge1 = rand() % RAW - 0;
-            edge2 = rand() % COL - 0;
+        node1 = rand() % RAW - 0;
+        node2 = rand() % COL - 0;
+        while (graph[node1][node2] != 0) {
+            node1 = rand() % RAW - 0;
+            node2 = rand() % COL - 0;
         }
         weighted = rand() % 10;
-        graph[edge1][edge2] = weighted;
-        graph[edge2][edge1] = weighted;
+        graph[node1][node2] = weighted;
+        graph[node2][node1] = weighted;
     }
 }
 
