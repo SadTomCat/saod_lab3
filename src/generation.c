@@ -3,7 +3,7 @@
 #include <limits.h>
 #include <stdio.h>
 #include <time.h> 
-#include "generation.h"
+#include "include/generation.h"
 
 void init_graph()
 {   
@@ -24,9 +24,11 @@ void generation_graph()
     //нужно для того чтобы создать связный граф.
     for (uint8_t i = 0; i < RAW; i++) {            
         node1 = rand() % RAW - 0;
+
         while (node1 == i || graph[node1][i] != 0) {
             node1 = rand() % RAW - 0;
         }
+
         weighted = rand() % 10;
         graph[i][node1] = weighted;
         graph[node1][i] = weighted;
@@ -35,10 +37,12 @@ void generation_graph()
     for (uint8_t i = 0; i < 160; i++) {
         node1 = rand() % RAW - 0;
         node2 = rand() % COL - 0;
+
         while (graph[node1][node2] != 0) {
             node1 = rand() % RAW - 0;
             node2 = rand() % COL - 0;
         }
+
         weighted = rand() % 10;
         graph[node1][node2] = weighted;
         graph[node2][node1] = weighted;
@@ -51,6 +55,7 @@ void print_graph()
         for (uint8_t j = 0; j < COL; j++) {
             printf("%d ", graph[i][j]);
         }
+
         printf("\n");
     }
 }
@@ -58,6 +63,7 @@ void print_graph()
 void num_nil() 
 {
     uint16_t nil = 0;
+
     for (uint8_t i = 0; i < RAW; i++) {
         for (uint8_t j = 0; j < COL; j++) {
             if (graph[i][j] == 0) {
@@ -65,5 +71,6 @@ void num_nil()
             }
         }
     }
+
     printf("Number nil %d\n", nil); 
 }

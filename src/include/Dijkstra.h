@@ -1,7 +1,7 @@
 #ifndef DIJKSTRA_H_
 #define DIJKSTRA_H_
 
-uint8_t done[RAW]; //текущее расстояние до
+uint8_t done[RAW]; //текущее расстояние до вершины
 uint8_t visited[RAW]; //посещенные вершины
 int prev[RAW]; //хранит  номер предшествующей вершины
 
