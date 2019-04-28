@@ -5,7 +5,7 @@
 #include <time.h> 
 #include "include/generation.h"
 
-void init_graph()
+void graph_init(uint8_t graph[][COL])
 {   
     for (uint8_t i = 0; i < RAW; i++) {
         for (uint8_t j = 0; j < COL; j++) {
@@ -14,9 +14,10 @@ void init_graph()
     }
 }
 
-void generation_graph()
+void graph_generation(uint8_t graph[][COL])
 {
-    init_graph();
+    graph_init(graph);
+
     uint8_t node1 = rand() % RAW - 0;
     uint8_t node2 = rand() % COL - 0;
     uint8_t weighted;
@@ -49,7 +50,7 @@ void generation_graph()
     }
 }
 
-void print_graph()
+void graph_print(uint8_t graph[][COL])
 {
     for (uint8_t i = 0; i < RAW; i++) {
         for (uint8_t j = 0; j < COL; j++) {
@@ -60,7 +61,7 @@ void print_graph()
     }
 }
 
-void num_nil() 
+void num_nil(uint8_t graph[][COL]) 
 {
     uint16_t nil = 0;
 
@@ -74,3 +75,4 @@ void num_nil()
 
     printf("Number nil %d\n", nil); 
 }
+

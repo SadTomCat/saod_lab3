@@ -4,11 +4,9 @@
 #define RAW 20
 #define COL 20
 
-int graph[RAW][COL];
-
-void generation_graph();
-void init_graph();
-void print_graph();
-void num_nil();
+void graph_init(uint8_t graph[][COL]);
+void graph_generation(uint8_t graph[][COL]);
+void graph_print(uint8_t graph[][COL]);
+void num_nil(uint8_t graph[][COL]);
 
 #endif //GENERATION_H_

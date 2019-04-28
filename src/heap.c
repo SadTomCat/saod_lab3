@@ -88,8 +88,16 @@ void heapify(Heap* buf, uint8_t index)
     
 }
 
-int heap_increase_key(Heap* buf, uint8_t index, uint8_t new_key)
+int heap_decrease_key(Heap* buf, uint8_t value, uint8_t new_key, uint8_t size)
 {
+    uint8_t index;
+
+    for (uint8_t i = 0; i < size; i++) {
+        if (buf->nodes[i].value == value) {
+            index = i;
+        }
+    }
+
     if (buf->nodes[index].key <= new_key) {
         printf("ERROR: New key more than old key");
         return - 1;
