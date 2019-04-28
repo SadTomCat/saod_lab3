@@ -52,14 +52,39 @@ void graph_generation(int graph[][COL])
 
 void graph_print(int graph[][COL])
 {
-    for (int i = 0; i < RAW; i++) {
-        printf("%d| ", i);
-        for (int j = 0; j < COL; j++) {
-            printf("%d ", graph[i][j]);
+    for (int i = 0; i <= RAW; i++) {
+        if (i != RAW) {
+            if (i < 10) {
+                printf("%d |  ", i);
+            } else {
+                printf("%d|  ", i);
+            }
+
+            for (int j = 0; j < COL; j++) {
+                printf("%d  ", graph[i][j]);
+            }
+        } else {
+            printf("    ");
+            for (int j = 0; j < COL; j++) {
+                printf("---");
+            }
         }
+
         printf("\n");
     }
-    printf("\n");
+
+    printf("     ");
+
+    for (int i = 0; i < COL; i++) {
+        
+        if (i < 10) {
+            printf("%d  ", i);
+        } else {
+            printf("%d ", i);
+        }
+    }
+ 
+    printf("\n\n");
 }
 
 void num_nil(int graph[][COL]) 
