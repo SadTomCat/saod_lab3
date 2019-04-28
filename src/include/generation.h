@@ -4,9 +4,10 @@
 #define RAW 20
 #define COL 20
 
-void graph_init(uint8_t graph[][COL]);
-void graph_generation(uint8_t graph[][COL]);
-void graph_print(uint8_t graph[][COL]);
-void num_nil(uint8_t graph[][COL]);
+void graph_init(int graph[][COL]);
+void graph_generation(int graph[][COL]);
+void lattice_graph_generation(int graph[][100]);
+void graph_print(int graph[][COL]);
+void num_nil(int graph[][COL]);
 
 #endif //GENERATION_H_

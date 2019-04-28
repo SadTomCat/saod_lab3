@@ -5,25 +5,25 @@
 #include <time.h> 
 #include "include/generation.h"
 
-void graph_init(uint8_t graph[][COL])
+void graph_init(int graph[][COL])
 {   
-    for (uint8_t i = 0; i < RAW; i++) {
-        for (uint8_t j = 0; j < COL; j++) {
+    for (int i = 0; i < RAW; i++) {
+        for (int j = 0; j < COL; j++) {
             graph[i][j] = 0;
         }
     }
 }
 
-void graph_generation(uint8_t graph[][COL])
+void graph_generation(int graph[][COL])
 {
     graph_init(graph);
 
-    uint8_t node1 = rand() % RAW - 0;
-    uint8_t node2 = rand() % COL - 0;
-    uint8_t weighted;
+    int node1 = rand() % RAW - 0;
+    int node2 = rand() % COL - 0;
+    int weighted;
 
     //нужно для того чтобы создать связный граф.
-    for (uint8_t i = 0; i < RAW; i++) {            
+    for (int i = 0; i < RAW; i++) {            
         node1 = rand() % RAW - 0;
 
         while (node1 == i || graph[node1][i] != 0) {
@@ -35,7 +35,7 @@ void graph_generation(uint8_t graph[][COL])
         graph[node1][i] = weighted;
     }
 
-    for (uint8_t i = 0; i < 160; i++) {
+    for (int i = 0; i < 90; i++) {
         node1 = rand() % RAW - 0;
         node2 = rand() % COL - 0;
 
@@ -50,23 +50,24 @@ void graph_generation(uint8_t graph[][COL])
     }
 }
 
-void graph_print(uint8_t graph[][COL])
+void graph_print(int graph[][COL])
 {
-    for (uint8_t i = 0; i < RAW; i++) {
-        for (uint8_t j = 0; j < COL; j++) {
+    for (int i = 0; i < RAW; i++) {
+        printf("%d| ", i);
+        for (int j = 0; j < COL; j++) {
             printf("%d ", graph[i][j]);
         }
-
         printf("\n");
     }
+    printf("\n");
 }
 
-void num_nil(uint8_t graph[][COL]) 
+void num_nil(int graph[][COL]) 
 {
     uint16_t nil = 0;
 
-    for (uint8_t i = 0; i < RAW; i++) {
-        for (uint8_t j = 0; j < COL; j++) {
+    for (int i = 0; i < RAW; i++) {
+        for (int j = 0; j < COL; j++) {
             if (graph[i][j] == 0) {
                 nil++;
             }

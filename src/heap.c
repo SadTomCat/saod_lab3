@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "include/heap.h"
 
-Heap *heap_create(uint8_t max_size)
+Heap *heap_create(int max_size)
 {
     Heap *buf;
     buf = malloc(sizeof(*buf));
@@ -26,7 +26,7 @@ Heap *heap_create(uint8_t max_size)
     return NULL;
 }
 
-void heap_insert(Heap* buf, uint8_t key, uint8_t value)
+void heap_insert(Heap* buf, int key, int value)
 {
     if (buf == NULL) {
         printf("ERROR: Heap == NULL");
@@ -42,7 +42,7 @@ void heap_insert(Heap* buf, uint8_t key, uint8_t value)
     buf->nodes[buf->num_nodes].key = key;
     buf->num_nodes++;
 
-    for (uint8_t i = buf->num_nodes - 1; i > 0 && buf->nodes[i].key < buf->nodes[(i - 1) / 2].key; i = (i - 1) / 2) {
+    for (int i = buf->num_nodes - 1; i > 0 && buf->nodes[i].key < buf->nodes[(i - 1) / 2].key; i = (i - 1) / 2) {
         heap_swap(&buf->nodes[i], &buf->nodes[(i - 1) / 2]);
     }
 }
@@ -56,25 +56,26 @@ void heap_extract_min(Heap* buf)
 
     HeapNode heap_min = buf->nodes[0];
     buf->nodes[0] = buf->nodes[buf->num_nodes - 1];
+    buf->num_nodes--;
     heapify(buf, 0);
 }
 
-void heapify(Heap* buf, uint8_t index)
+void heapify(Heap* buf, int index)
 {
-    uint8_t left;
-    uint8_t right;
-    uint8_t less;
+    int left;
+    int right;
+    int less;
 
     while (1) {
         left = (2 * index) + 1;
         right = (2 * index) + 2;
         less = index;
 
-        if (buf->nodes[less].key > buf->nodes[left].key && left < buf->nodes) {
+        if (buf->nodes[less].key > buf->nodes[left].key && left < buf->num_nodes) {
             less = left; 
         }
 
-        if (buf->nodes[less].key > buf->nodes[right].key && right < buf->nodes) {
+        if (buf->nodes[less].key > buf->nodes[right].key && right < buf->num_nodes) {
             less = right; 
         }
 
@@ -88,13 +89,13 @@ void heapify(Heap* buf, uint8_t index)
     
 }
 
-int heap_decrease_key(Heap* buf, uint8_t value, uint8_t new_key, uint8_t size)
+int heap_decrease_key(Heap* buf, int value, int new_key, int size)
 {
-    uint8_t index;
-
-    for (uint8_t i = 0; i < size; i++) {
+    int index;
+    for (int i = 0; i < size; i++) {
         if (buf->nodes[i].value == value) {
             index = i;
+            break;
         }
     }
 
@@ -109,7 +110,7 @@ int heap_decrease_key(Heap* buf, uint8_t value, uint8_t new_key, uint8_t size)
         heap_swap(&buf->nodes[index], &buf->nodes[(index - 1) / 2]);
         index = (index - 1) / 2;
     }
-
+    
     return index;
 }
 
