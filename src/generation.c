@@ -63,8 +63,10 @@ void graph_print(int graph[][COL])
             for (int j = 0; j < COL; j++) {
                 printf("%d  ", graph[i][j]);
             }
+
         } else {
             printf("    ");
+            
             for (int j = 0; j < COL; j++) {
                 printf("---");
             }
@@ -89,7 +91,7 @@ void graph_print(int graph[][COL])
 
 void num_nil(int graph[][COL]) 
 {
-    uint16_t nil = 0;
+    int nil = 0;
 
     for (int i = 0; i < RAW; i++) {
         for (int j = 0; j < COL; j++) {

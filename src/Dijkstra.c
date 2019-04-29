@@ -40,7 +40,7 @@ Dijkstra* shortest_path(int graph[][COL], int src)
             graph[node.value][j]) && graph[node.value][j] != 0) {
                 shortest->distance[j] = shortest->distance[node.value] + graph[node.value][j];
                 shortest->prev[j] = node.value;
-                heap_decrease_key(queue, j, shortest->distance[j], COL);
+                heap_decrease_key(queue, j, shortest->distance[j]);
             }
         }    
     }

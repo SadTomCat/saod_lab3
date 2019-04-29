@@ -6,7 +6,6 @@
 
 void graph_init(int graph[][COL]);
 void graph_generation(int graph[][COL]);
-void lattice_graph_generation(int graph[][100]);
 void graph_print(int graph[][COL]);
 void num_nil(int graph[][COL]);
 

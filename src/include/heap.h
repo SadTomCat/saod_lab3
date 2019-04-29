@@ -20,6 +20,6 @@ void heap_extract_min(Heap* buf); //
 void heapify(Heap* buf, int index); //
 void heap_swap(HeapNode* a, HeapNode* b); //
 void heap_insert(Heap* buf, int key, int value); //
-int heap_decrease_key(Heap* buf, int value, int new_key, int size); //
+int heap_decrease_key(Heap* buf, int value, int new_key); //
 
 #endif //HEAP_H_

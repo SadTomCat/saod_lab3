@@ -89,13 +89,12 @@ void heapify(Heap* buf, int index)
     
 }
 
-int heap_decrease_key(Heap* buf, int value, int new_key, int size)
+int heap_decrease_key(Heap* buf, int value, int new_key)
 {
     int index;
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < buf->num_nodes; i++) {
         if (buf->nodes[i].value == value) {
             index = i;
-            break;
         }
     }
 
